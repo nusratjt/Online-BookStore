@@ -1,5 +1,21 @@
 <div class="row">
-    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books">
+  <div class="col-lg-3">
+    <div class="list-group">
+      <a routerLink="/category/1" class="list-group-item" 
+      routerLinkActive="bg-primary text-white font-weight-bold">Web Development</a>
+      <a routerLink="/category/2" class="list-group-item" 
+      routerLinkActive="bg-primary text-white font-weight-bold">Programming</a>
+      <a routerLink="/category/3" class="list-group-item" 
+      routerLinkActive="bg-primary text-white font-weight-bold">Databases</a>
+      <a routerLink="/category/4" class="list-group-item" 
+      routerLinkActive="bg-primary text-white font-weight-bold">Administration</a>
+      
+      
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books">
         <div class="card h-100">
           <a href="#"><img class="card-img-top img-responsive" [src]="book.imageUrl"></a>
           <div class="card-body">
@@ -14,4 +30,6 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>
