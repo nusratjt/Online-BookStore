@@ -33,6 +33,11 @@ private categoryUrl="http://localhost:8080/api/book-category";
     const searchUrl = `${this.baseUrl}/search/searchBykeyword?name=${keyword}`;
     return this.getBooksList(searchUrl);
   }
+
+  getBookDetails(bookId: number):Observable<Book>{
+    const bookDetailsUrl = `${this.baseUrl}/${bookId}`;
+    return this.httpClient.get<Book>(bookDetailsUrl);
+  }
 }
 
 interface GetResponseBooks{
