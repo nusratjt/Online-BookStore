@@ -1,0 +1,54 @@
+<div class="row">
+
+    <div class="col-md-3">
+
+        <!-- category component -->
+        <app-book-category></app-book-category>
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <td width="20%">Book Image</td>
+                            <td width="50%">Book Details</td>
+                            <td width="30%"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cartItem of cartItems">
+                            <td>
+                                <img [src]="cartItem.imageUrl" class="img-responsive" width="150" height="200"/>
+                            </td>
+                            <td>
+                                <p>{{cartItem.name}}</p>
+                                <p>{{cartItem.unitPrice | currency}}</p>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Quantity: {{cartItem.quantity}}</p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>Sub total: {{cartItem.quantity * cartItem.unitPrice | currency}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td class="font-weight-bold">
+                                <p>Total Quantity: {{totalQuantity}}</p>
+                                <p>Shipping: Free</p>
+                                <p>Total Price: {{totalPrice | currency}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
