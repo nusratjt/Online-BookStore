@@ -32,4 +32,20 @@ export class CartDetailsComponent implements OnInit {
     this._cartService.calculateTotalPrice();
   }
 
+  //increment Quantity
+  incrementQuantity(cartItem: CartItem){
+    console.log('Increment quantity', cartItem);
+    this._cartService.addToCart(cartItem);
+  }
+
+  //decrement quantity
+  decrementQuantity(cartItem: CartItem){
+    this._cartService.decrementQuantity(cartItem);
+  }
+
+  remove(cartItem: CartItem){
+    this._cartService.remove(cartItem);
+
+  }
+
 }

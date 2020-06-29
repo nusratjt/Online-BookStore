@@ -10,44 +10,69 @@
         <div class="row">
 
             <div class="col-md-12">
-                <table class="table table-bordered">
-                    <thead class="bg-dark text-light">
-                        <tr>
-                            <td width="20%">Book Image</td>
-                            <td width="50%">Book Details</td>
-                            <td width="30%"></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let cartItem of cartItems">
-                            <td>
-                                <img [src]="cartItem.imageUrl" class="img-responsive" width="150" height="200"/>
-                            </td>
-                            <td>
-                                <p>{{cartItem.name}}</p>
-                                <p>{{cartItem.unitPrice | currency}}</p>
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p>Quantity: {{cartItem.quantity}}</p>
+                <div *ngIf="cartItems.length > 0">
+
+                    <table class="table table-bordered">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <td width="20%">Book Image</td>
+                                <td width="50%">Book Details</td>
+                                <td width="30%"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cartItem of cartItems">
+                                <td>
+                                    <img [src]="cartItem.imageUrl" class="img-responsive" width="150" height="200"/>
+                                </td>
+                                <td>
+                                    <p>{{cartItem.name}}</p>
+                                    <p>{{cartItem.unitPrice | currency}}</p>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>Quantity: 
+                                                <button (click)="remove(cartItem)" class="float-right pointer text-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4"> 
+                                            <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm float-left">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            {{cartItem.quantity}}
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm float-right">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <p>Sub total: {{cartItem.quantity * cartItem.unitPrice | currency}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <p>Sub total: {{cartItem.quantity * cartItem.unitPrice | currency}}</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td class="font-weight-bold">
-                                <p>Total Quantity: {{totalQuantity}}</p>
-                                <p>Shipping: Free</p>
-                                <p>Total Price: {{totalPrice | currency}}</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td class="font-weight-bold">
+                                    <p>Total Quantity: {{totalQuantity}}</p>
+                                    <p>Shipping: Free</p>
+                                    <p>Total Price: {{totalPrice | currency}}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="cartItems.length == 0" class="alert alert-warning" role="alert">
+                    Yourt cart is empty!!
+                </div>
             </div>
         </div>
     </div>
